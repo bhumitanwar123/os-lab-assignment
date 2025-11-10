@@ -1,0 +1,4 @@
+# ENCS351 Operating Systems Lab - Assignment 3
+# Python requirements
+python>=3.6
+

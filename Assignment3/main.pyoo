@@ -1,0 +1,115 @@
+#!/usr/bin/env python3
+"""
+ENCS351 Operating System Lab - Assignment 3
+Main Program Orchestrator
+"""
+
+import os
+import sys
+
+def clear_screen():
+    """Clear terminal screen"""
+    os.system('cls' if os.name == 'nt' else 'clear')
+
+def display_menu():
+    """Display main menu"""
+    print("=" * 60)
+    print("        OPERATING SYSTEMS LAB - ASSIGNMENT 3")
+    print("=" * 60)
+    print("1. Task 1: CPU Scheduling Algorithms")
+    print("2. Task 4: Contiguous Memory Allocation")
+    print("3. Task 5: MFT & MVT Memory Management")
+    print("4. Run All Simulations")
+    print("5. Exit")
+    print("=" * 60)
+
+def run_task1():
+    """Run CPU Scheduling Task"""
+    print("\n" + "=" * 50)
+    print("TASK 1: CPU SCHEDULING ALGORITHMS")
+    print("=" * 50)
+    
+    # Import and run task1 functions
+    from task1_scheduling import priority_scheduling, round_robin_scheduling
+    
+    print("1. Priority Scheduling")
+    print("2. Round Robin Scheduling")
+    print("3. Both Algorithms")
+    
+    choice = input("\nEnter your choice (1/2/3): ")
+    
+    if choice == '1':
+        priority_scheduling()
+    elif choice == '2':
+        round_robin_scheduling()
+    elif choice == '3':
+        priority_scheduling()
+        round_robin_scheduling()
+    else:
+        print("Invalid choice!")
+
+def run_task4():
+    """Run Memory Allocation Task"""
+    print("\n" + "=" * 50)
+    print("TASK 4: CONTIGUOUS MEMORY ALLOCATION")
+    print("=" * 50)
+    
+    from task4_memory import main as task4_main
+    task4_main()
+
+def run_task5():
+    """Run MFT & MVT Task"""
+    print("\n" + "=" * 50)
+    print("TASK 5: MFT & MVT MEMORY MANAGEMENT")
+    print("=" * 50)
+    
+    from task5_mft_mvt import main as task5_main
+    task5_main()
+
+def run_all_simulations():
+    """Run all tasks sequentially"""
+    print("\n" + "=" * 60)
+    print("RUNNING ALL SIMULATIONS")
+    print("=" * 60)
+    
+    input("Press Enter to start Task 1 (CPU Scheduling)...")
+    run_task1()
+    
+    input("\nPress Enter to continue to Task 4 (Memory Allocation)...")
+    run_task4()
+    
+    input("\nPress Enter to continue to Task 5 (MFT & MVT)...")
+    run_task5()
+    
+    print("\n" + "=" * 60)
+    print("ALL SIMULATIONS COMPLETED!")
+    print("=" * 60)
+
+def main():
+    """Main program loop"""
+    while True:
+        clear_screen()
+        display_menu()
+        
+        choice = input("\nEnter your choice (1-5): ")
+        
+        if choice == '1':
+            run_task1()
+        elif choice == '2':
+            run_task4()
+        elif choice == '3':
+            run_task5()
+        elif choice == '4':
+            run_all_simulations()
+        elif choice == '5':
+            print("\nThank you for using OS Lab Assignment 3!")
+            print("Exiting program...")
+            break
+        else:
+            print("Invalid choice! Please enter 1-5.")
+        
+        input("\nPress Enter to continue...")
+
+if __name__ == "__main__":
+    main()
+
